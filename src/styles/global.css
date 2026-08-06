@@ -1,0 +1,58 @@
+:root {
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --bg: #08080a; --panel: #101013; --panel2: #15151a; --line: #26262d; --line2: #1d1d23;
+  --tx: #f2f2f4; --tx2: #a4a4ae; --tx3: #71717c; --hover: #17171c; --accent: #6366f1; --barc: #33334a;
+  --danger: #fca5a5; --danger-bg: #2a0f10; --danger-bd: #7f1d1d;
+  --s-trial-fg: #93c5fd; --s-trial-bg: #101f3d; --s-trial-bd: #1e3a72;
+  --s-active-fg: #86efac; --s-active-bg: #0a2417; --s-active-bd: #15542f;
+  --s-past_due-fg: #fcd34d; --s-past_due-bg: #271b04; --s-past_due-bd: #6b4708;
+  --s-suspended-fg: #fdba74; --s-suspended-bg: #2a1206; --s-suspended-bd: #7c3610;
+  --s-churned-fg: #a1a1aa; --s-churned-bg: #18181c; --s-churned-bd: #2e2e36;
+  --s-provisioning-fg: #d8b4fe; --s-provisioning-bg: #20103a; --s-provisioning-bd: #5b21b6;
+  --rowh: 30px;
+}
+:root[data-theme="light"] {
+  --bg: #f6f6f7; --panel: #ffffff; --panel2: #fafafb; --line: #e3e3e7; --line2: #eeeef1;
+  --tx: #18181b; --tx2: #55555f; --tx3: #8b8b95; --hover: #f5f5f7; --barc: #d9d9e3;
+  --danger: #b91c1c; --danger-bg: #fef2f2; --danger-bd: #fecaca;
+  --s-trial-fg: #1d4ed8; --s-trial-bg: #eff6ff; --s-trial-bd: #bfdbfe;
+  --s-active-fg: #15803d; --s-active-bg: #f0fdf4; --s-active-bd: #bbf7d0;
+  --s-past_due-fg: #a16207; --s-past_due-bg: #fffbeb; --s-past_due-bd: #fde68a;
+  --s-suspended-fg: #c2410c; --s-suspended-bg: #fff7ed; --s-suspended-bd: #fed7aa;
+  --s-churned-fg: #52525b; --s-churned-bg: #f4f4f5; --s-churned-bd: #e4e4e7;
+  --s-provisioning-fg: #7e22ce; --s-provisioning-bg: #faf5ff; --s-provisioning-bd: #e9d5ff;
+}
+:root[data-density="comfortable"] { --rowh: 38px; }
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--tx);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code, .mono { font-family: var(--mono); font-size: 12px; letter-spacing: -0.01em; }
+table { border-collapse: collapse; width: 100%; }
+th, td { text-align: left; padding: 0 10px; height: var(--rowh); white-space: nowrap; border-bottom: 1px solid var(--line2); }
+th {
+  position: sticky; top: 0; z-index: 1; background: var(--panel2); color: var(--tx3);
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+  border-bottom: 1px solid var(--line); cursor: pointer; user-select: none;
+}
+tbody tr:hover { background: var(--hover); }
+input, select, button, textarea { font-family: inherit; font-size: 13px; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 6px; border: 3px solid transparent; background-clip: content-box; }
+
+@keyframes pul { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes shim { 0% { background-position: -320px 0; } 100% { background-position: 320px 0; } }
