@@ -76,11 +76,34 @@ export interface TenantOwnerApi {
   phone: string;
 }
 
+/**
+ * [P5 owner multi-salon] Résultat du lookup owner (`GET /owners/lookup`, passe-plat CP vers
+ * le Data Plane). TROIS issues, à ne jamais confondre côté UI :
+ *   - `exists: false`                       → aucun compte      → création classique
+ *   - `exists: true`, `ownerships` VIDE     → compte non-owner  → proposition de PROMOTION
+ *   - `exists: true`, `ownerships` remplis  → owner ailleurs    → proposition de RATTACHEMENT
+ */
+export interface OwnerOwnershipApi {
+  tenantId: string;
+  salonName: string;
+  locationLabel?: string;
+}
+export interface OwnerLookupApi {
+  exists: boolean;
+  userId?: string;
+  ownerships?: OwnerOwnershipApi[];
+}
+
 export interface TenantRecord {
   _id: string;
   tenantId: string;
   slug: string;
   name: string;
+  /** [P4] Libellé d'emplacement, purement d'affichage — distingue deux salons homonymes. */
+  locationLabel?: string;
+  /** [P5] `users._id` côté Data Plane, renseigné par le DP au provisioning. */
+  ownerUserId?: string;
+  attachToExistingOwner?: boolean;
   status: TenantStatusApi;
   deployment: 'saas' | 'dedicated';
   dataPlaneUrl?: string;
